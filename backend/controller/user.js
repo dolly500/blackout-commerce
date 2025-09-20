@@ -102,7 +102,7 @@ router.post("/create-user", async (req, res, next) => {
 router.post('/check-email', async (req, res) => {
   const { email } = req.body;
 
-  const user = await User.findOne({ email }); // Adjust based on your DB
+  const user = await User.findOne({ email }); 
   if (user) {
     return res.json({ exists: true });
   }
@@ -110,54 +110,48 @@ router.post('/check-email', async (req, res) => {
 });
 
 
+
 // create activation token
 const createActivationToken = (user) => {
-  return jwt.sign(user, process.env.ACTIVATION_SECRET, {
-    expiresIn: "30m",
-  });
+  return jwt.sign(
+    { email: user.email }, 
+    process.env.ACTIVATION_SECRET,
+    { expiresIn: "30m" }
+  );
 };
 
 
 // activate user
-router.post(
-  "/activation",
-  catchAsyncErrors(async (req, res, next) => {
-    try {
-      const { activation_token } = req.body;
+router.post("/activation", catchAsyncErrors(async (req, res, next) => {
+  try {
+    const { activation_token } = req.body;
 
-      const newUser = jwt.verify(
-        activation_token,
-        process.env.ACTIVATION_SECRET
-      );
-
-      if (!newUser) {
-        return next(new ErrorHandler("Invalid token", 400));
-      }
-      const { name, email, password, avatar } = newUser;
-
-      let user = await User.findOne({ email });
-
-      if (user) {
-        return next(new ErrorHandler("User already exists", 400));
-      }
-      user = await User.create({
-        name,
-        email,
-        avatar,
-        password,
-      });
-
-      // Include user data in the response
-      res.status(201).json({
-        success: true,
-        message: "User activated successfully",
-        user: user, // Include user data here
-      });
-    } catch (error) {
-      return next(new ErrorHandler(error.message, 500));
+    const decoded = jwt.verify(activation_token, process.env.ACTIVATION_SECRET);
+    if (!decoded) {
+      return next(new ErrorHandler("Invalid or expired token", 400));
     }
-  })
-);
+
+    // Now you can safely re-fetch user data that was stored temporarily
+    const { name, email, password, avatar } = req.body.userData; 
+    // Or store user info in a temporary DB/cache before sending mail
+
+    let user = await User.findOne({ email });
+    if (user) {
+      return next(new ErrorHandler("User already exists", 400));
+    }
+
+    user = await User.create({ name, email, avatar, password });
+
+    res.status(201).json({
+      success: true,
+      message: "User activated successfully",
+      user,
+    });
+  } catch (error) {
+    return next(new ErrorHandler(error.message, 500));
+  }
+}));
+
 
 
 // login user
