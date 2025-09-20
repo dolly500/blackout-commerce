@@ -15,9 +15,9 @@ const swaggerDocument = require('./swagger-output.json');
 
 
 app.use(cors({
-  origin: ['https://www.medistorepro.com', 'https://medical-e-app.vercel.app', 'http://localhost:3000'],
+  origin: ['https://blackout-commerce.vercel.app/', 'http://localhost:3000'],
   credentials: true,
-  domain: 'https://www.medistorepro.com'
+  domain: 'https://blackout-commerce.vercel.app/'
 }));
 
 // app.use(express.bodyParser({limit: '50mb'}))
