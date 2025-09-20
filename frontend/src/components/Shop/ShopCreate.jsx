@@ -7,7 +7,7 @@ import { server } from "../../server";
 import { toast } from "react-toastify";
 import { RxAvatar } from "react-icons/rx";
 import { FaHome } from "react-icons/fa"; 
-import logo from "../../static/imgs/logo.png"
+
 
 const ShopCreate = () => {
   const [email, setEmail] = useState("");

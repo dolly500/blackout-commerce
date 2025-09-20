@@ -7,7 +7,7 @@ import { server } from "../../server";
 import { toast } from "react-toastify";
 // import Cookies from "js-cookie"
 import { FaHome } from "react-icons/fa";
-import logo from '../../static/imgs/logo.png'
+
 import { setLocalStorage } from "../../lib/localStorage";
 
 const ShopLogin = () => {

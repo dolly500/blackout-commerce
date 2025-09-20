@@ -26,10 +26,10 @@ const Hero = () => {
             className={`relative z-10 ${styles.section} w-[90%] 800px:w-[60%] text-white`}
             style={{ marginTop: "60px", textAlign: "center" }}
           >
-            <h1 className="text-[30px] 800px:text-[55px] font-extrabold leading-tight text-white">
+            <h1 className="text-[30px] 800px:text-[55px] font-extrabold leading-tight text-black">
               Best Collection Of <br /> Clothing Store
             </h1>
-            <p className="pt-5 text-[16px] 800px:text-[20px] font-bold text-white">
+            <p className="pt-5 text-[16px] 800px:text-[20px] font-bold text-black">
               Explore Clothings that meets top safety and reliability standards.
             </p>
           </div>

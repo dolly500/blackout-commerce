@@ -1,7 +1,7 @@
 // src/components/QuestionnaireForm.js
 import React, { useState } from 'react';
 import { Link } from "react-router-dom";
-import logo from '../static/imgs/logo.png';
+
 import { FaHome } from "react-icons/fa";
 import { useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
@@ -30,13 +30,7 @@ const QuestionnaireForm = () => {
   return (
     <div className="w-full bg-white">
       <div className="max-w-md mx-auto mt-8 p-4 shadow-md rounded">
-        <Link to="/">
-          <img
-            src={logo}
-            alt="Logo"
-            style={{ height: '60px', width: '160px', display: 'flex', margin: '0 auto' }}
-          />
-        </Link>
+       
         <div className="sm:mx-auto sm:w-full sm:max-w-md">
         <Link to="/">
           {/* Home Icon Button */}

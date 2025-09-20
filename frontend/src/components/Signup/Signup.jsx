@@ -5,7 +5,7 @@ import { RxAvatar } from "react-icons/rx";
 import { Link } from "react-router-dom";
 import { toast } from "react-toastify";
 import { server } from "../../server";
-import logo from "../../static/imgs/logo.png";
+
 import { FaHome } from "react-icons/fa"; 
 import styles from "../../styles/styles";
 

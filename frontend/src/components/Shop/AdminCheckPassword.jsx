@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
 import axios from 'axios'; // Import Axios for making HTTP requests
 import { Link } from 'react-router-dom';
-import logo from '../../static/imgs/logo.png';
 import { FaHome } from "react-icons/fa"; 
 import { toast, ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
@@ -54,9 +53,9 @@ const AdminCheckPassword = () => {
   return (
     <div className="flex items-center justify-center h-screen bg-white">
       <div className="w-96 p-8 bg-white shadow-md rounded-md">
-        <Link to="/">
+        {/* <Link to="/">
           <img src={logo} alt='' style={{ height: '130px', width: '120px', display: 'flex', margin: '0 auto' }} />
-        </Link>
+        </Link> */}
 
         <Link to="/">
           {/* Home Icon Button */}
