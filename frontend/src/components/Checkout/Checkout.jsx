@@ -680,7 +680,7 @@ const Checkout = () => {
         {paymentMethod === 'payondelivery' && (
          <>
           <div className="mt-6 p-5 bg-white shadow-lg rounded-lg border border-gray-200">
-            Place Order on delivery by reaching out to <a href='#' style={{color: 'blue'}}>Medistorepro@outlook.com</a>
+            Place Order on delivery by reaching out to <a href='#' style={{color: 'blue'}}>blackout@outlook.com</a>
           </div>
          </>
         )}

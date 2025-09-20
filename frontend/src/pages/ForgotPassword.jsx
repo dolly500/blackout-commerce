@@ -39,10 +39,7 @@ const ForgotPassword = () => {
   return (
     <div className="min-h-screen flex items-center justify-center bg-white">
       <div className="bg-white p-8 shadow-md rounded-md w-96">
-      <Link to="/">
-        <img src={logo} alt='' style={{ height: '60px', width: '160px', display: 'flex', margin: '0 auto' }}
-        />
-      </Link>
+      
 
       <Link to="/">
           {/* Home Icon Button */}

@@ -12,7 +12,7 @@ import {
   footerSupportLinks,
   footercompanyLinks,
 } from "../../static/data";
-import logo from "../../static/imgs/logo.png";
+import logo from "../../static/imgs/IMG_5771.JPG";
 
 const Footer = () => {
   const emailInputRef = useRef(null);
@@ -38,8 +38,8 @@ const Footer = () => {
   };
 
   return (
-    <div className="bg-gray-600 text-white"> {/* Updated to grey background */}
-      <div className="md:flex md:justify-between md:items-center sm:px-12 px-4 bg-blue-700 py-7">
+    <div className="bg-black text-white"> {/* Updated to grey background */}
+      <div className="md:flex md:justify-between md:items-center sm:px-12 px-4 bg-black py-7">
         <h1 className="lg:text-4xl text-3xl md:mb-0 mb-6 lg:leading-normal font-bold md:w-2/5">
           <span className="text-white">Subscribe</span> to get news{" "}
           <br />
@@ -90,7 +90,7 @@ const Footer = () => {
           ))}
         </ul>
 
-        <ul className="text-center sm:text-start">
+        {/* <ul className="text-center sm:text-start">
           <h1 className="mb-1 font-bold text-white">Shop</h1>
           {footercompanyLinks.map((link, index) => (
             <li key={index}>
@@ -102,7 +102,7 @@ const Footer = () => {
               </Link>
             </li>
           ))}
-        </ul>
+        </ul> */}
 
         <ul className="text-center sm:text-start">
           <h1 className="mb-1 font-bold text-white">Support</h1>
@@ -120,13 +120,10 @@ const Footer = () => {
       </div>
 
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-10 text-center pt-2 text-gray-400 text-sm pb-8">
-        <span className="font-bold">© 2024. All rights reserved.</span>
+        <span className="font-bold">© 2025. All rights reserved.</span>
         <span className="font-bold">Terms · Privacy Policy</span>
         <div className="sm:block flex items-center justify-center w-full">
-          <img
-            src="https://hamart-shop.vercel.app/_next/image?url=%2F_next%2Fstatic%2Fmedia%2Ffooter-payment.a37c49ac.png&w=640&q=75"
-            alt="Payment Methods"
-          />
+         
         </div>
       </div>
     </div>

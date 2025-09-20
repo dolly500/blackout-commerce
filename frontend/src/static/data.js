@@ -23,18 +23,6 @@ export const navItems = [
     url: "/events",
   },
   {
-    id: 5,
-
-    title: "About Us",
-    url: "/about",
-  },
-  {
-    id: 6,
-
-    title: "Blog",
-    url: "/posts",
-  },
-  {
     id: 7,
     title: "Contact Us",
     url: "/contact",

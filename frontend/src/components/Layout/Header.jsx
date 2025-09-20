@@ -13,7 +13,7 @@ import { RxCross1 } from "react-icons/rx";
 import { useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 import { server } from "../../server";
-import logo from "../../static/imgs/logo.png";
+import logo from "../../static/imgs/IMG_5771.JPG";
 import styles from "../../styles/styles";
 import Wishlist from "../Wishlist/Wishlist";
 import Cart from "../cart/Cart";
@@ -138,11 +138,11 @@ const Header = ({ activeHeading, data }) => {
 
   return (
     <>
-      <div className={`${styles.section} lg:bg-transparent lg:h-19 lg:w-300 lg:p-1`} style={{ width: '100%' }} >
+      <div className={`${styles.section} lg:bg-black lg:h-19 lg:w-300 lg:p-1`} style={{ width: '100%' }} >
         <div className="hidden 800px:h-[50px] 800px:my-[20px] 800px:flex items-center justify-between">
           <div className="">
             <Link to="/">
-              <img className="h-15 max-w-full w-3/5 ml-8"
+              <img width='150' height='100'
                 src={logo}
                 alt=""
               />
@@ -152,10 +152,10 @@ const Header = ({ activeHeading, data }) => {
           <div className="mr-[0] 1200px:mr-[0] 800px:mr-[20px] w-[50%] relative">
             <input
               type="text"
-              placeholder="Search Medical Equipments..."
+              placeholder="Search Clothing Store..."
               value={searchTerm}
               onChange={handleSearchChange}
-              className="h-[40px] w-full px-2 border-[#0000FF] border-[2px] rounded-md"
+              className="h-[40px] w-full px-2 border-[white] border-[2px] rounded-md"
             />
             <AiOutlineSearch
               size={30}
@@ -185,7 +185,7 @@ const Header = ({ activeHeading, data }) => {
       </div>
       <div
         className={`${active === true ? "shadow-sm fixed top-0 left-0 z-10" : null
-          } transition hidden 800px:flex items-center justify-between w-full bg-blue-700 h-[70px]`}
+          } transition hidden 800px:flex items-center justify-between w-full bg-black h-[70px]`}
       >
         <div
           className={`${styles.section} relative ${styles.noramlFlex} justify-between`}
@@ -292,12 +292,12 @@ className={`w-full mb-6 h-[70px] z-50 top-0 left-0 ${
           </div>
           <div>
             <Link to="/">
-              <img
+              {/* <img
                 src={logo}
-                alt=""
+                alt=""Fdue 
                 className="mt-3 cursor-pointer max-w-full h-10 w-40"
                 style={{ maxHeight: '150px', backgroundColor: "transparent" }}
-              />
+              /> */}
             </Link>
           </div>
           <div className="flex">
@@ -348,7 +348,7 @@ className={`w-full mb-6 h-[70px] z-50 top-0 left-0 ${
               <div className="my-8 w-[92%] m-auto h-[40px relative]">
                 <input
                   type="search"
-                  placeholder="Search Medical Equipments..."
+                  placeholder="Search Clothing store..."
                   className="h-[40px] w-full px-2 border-[#0000FF] border-[2px] rounded-md"
                   value={searchTerm}
                   onChange={handleSearchChange}

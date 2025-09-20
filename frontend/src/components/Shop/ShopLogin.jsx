@@ -54,10 +54,7 @@ const ShopLogin = () => {
   return (
     <div className="min-h-screen bg-gray-50 flex flex-col justify-center py-12 sm:px-6 lg:px-8 ">
       <div className="sm:mx-auto sm:w-full sm:max-w-md">
-        <Link to="/">
-          <img src={logo} alt='' style={{ height: '60px', width: '190px', display: 'flex', margin: '0 auto' }}
-          />
-        </Link>
+        
 
         <Link to="/">
           {/* Home Icon Button */}
@@ -141,7 +138,7 @@ const ShopLogin = () => {
               <div className="text-sm">
                 <a
                   href="admin-forgot-password"
-                  className="font-medium text-blue-600 hover:text-blue-500"
+                  className="font-medium text-black hover:text-blue-500"
                 >
                   Forgot your password?
                 </a>
@@ -150,14 +147,14 @@ const ShopLogin = () => {
             <div>
               <button
                 type="submit"
-                className="group relative w-full h-[40px] flex justify-center py-2 px-4 border border-transparent text-sm font-medium rounded-md text-white bg-blue-600 hover:bg-blue-700"
+                className="group relative w-full h-[40px] flex justify-center py-2 px-4 border border-transparent text-sm font-medium rounded-md text-white bg-black hover:bg-blue-700"
               >
                 Submit
               </button>
             </div>
             <div className={`${styles.noramlFlex} w-full`}>
               <h4>Not have any account?</h4>
-              <Link to="/shop-create" className="text-blue-600 pl-2">
+              <Link to="/shop-create" className="text-black pl-2">
                 Sign Up
               </Link>
             </div>

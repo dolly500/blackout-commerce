@@ -6,7 +6,7 @@ import { Link, useNavigate } from "react-router-dom";
 import axios from "axios";
 import { server } from "../../server";
 import { toast } from "react-toastify";
-import logo from "../../static/imgs/logo.png"
+import logo from "../../static/imgs/IMG_5771.JPG"
 import { setLocalStorage } from "../../lib/localStorage";
 
 
@@ -53,11 +53,7 @@ const Login = () => {
   return (
     <div className="min-h-screen bg-gray-50 flex flex-col justify-center py-12 sm:px-6 lg:px-8">
       <Link to="/">
-        <img
-          src={logo}
-          alt=""
-          style={{ height: '60px', width: '190px', display: 'flex', margin: '0 auto' }}
-        />
+       
       </Link>
       <div className="sm:mx-auto sm:w-full sm:max-w-md">
         <Link to="/">
@@ -88,7 +84,7 @@ const Login = () => {
                   required
                   value={email}
                   onChange={(e) => setEmail(e.target.value)}
-                  className="appearance-none block w-full px-3 py-2 border border-pink-300 rounded-md shadow-sm placeholder-gray-400 focus:outline-none focus:ring-blue-500 focus:border-blue-500 sm:text-sm"
+                  className="appearance-none block w-full px-3 py-2 border border-black rounded-md shadow-sm placeholder-gray-400 focus:outline-none focus:ring-black focus:border-black sm:text-sm"
                 />
               </div>
             </div>
@@ -107,7 +103,7 @@ const Login = () => {
                   required
                   value={password}
                   onChange={(e) => setPassword(e.target.value)}
-                  className="appearance-none block w-full px-3 py-2 border border-pink-300 rounded-md shadow-sm placeholder-gray-400 focus:outline-none focus:ring-blue-500 focus:border-blue-500 sm:text-sm"
+                  className="appearance-none block w-full px-3 py-2 border border-black rounded-md shadow-sm placeholder-gray-400 focus:outline-none focus:ring-black focus:border-black sm:text-sm"
                 />
                 {visible ? (
                   <AiOutlineEye
@@ -130,7 +126,7 @@ const Login = () => {
                   type="checkbox"
                   name="remember-me"
                   id="remember-me"
-                  className="h-4 w-4 text-pink-600 focus:ring-pink-500 border-gray-300 rounded"
+                  className="h-4 w-4 text-black-600 focus:ring-black-500 border-gray-300 rounded"
                 />
                 <label
                   htmlFor="remember-me"
@@ -142,7 +138,7 @@ const Login = () => {
               <div className="text-sm">
                 <a
                   href="/forgot-password"
-                  className="font-medium text-blue-600 hover:text-black"
+                  className="font-medium text-black hover:text-black"
                 >
                   Forgot your password?
                 </a>
@@ -151,14 +147,14 @@ const Login = () => {
             <div>
               <button
                 type="submit"
-                className="group relative w-full h-[40px] flex justify-center py-2 px-4 border border-transparent text-sm font-medium rounded-md text-white bg-blue-600 hover:bg-blue-700"
+                className="group relative w-full h-[40px] flex justify-center py-2 px-4 border border-transparent text-sm font-medium rounded-md text-white bg-black hover:bg-blue-700"
               >
                 Submit
               </button>
             </div>
             <div className={`${styles.noramlFlex} w-full`}>
               <h4>Not have any account?</h4>
-              <Link to="/sign-up" className="text-blue-600 pl-2">
+              <Link to="/sign-up" className="text-black pl-2">
                 Sign Up
               </Link>
             </div>

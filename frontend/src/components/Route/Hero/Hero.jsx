@@ -20,30 +20,30 @@ const Hero = () => {
       <Slider {...settings}>
         {/* Slide 1 */}
         <div
-          className={`relative min-h-[40vh] 800px:min-h-[50vh] w-full bg-cover bg-center bg-no-repeat bg-[url(https://img.freepik.com/free-photo/metal-treatment-device-background-diagnostic_1232-4186.jpg?size=626&ext=jpg&ga=GA1.2.39547238.1724736152&semt=ais_hybrid)]`}
+          className={`relative min-h-[40vh] 800px:min-h-[50vh] w-full bg-cover bg-center bg-no-repeat bg-[url(https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTKRJta3pCT7TICEPp3XSFM5r898O_tz_RCcw&s)]`}
         >
           <div
             className={`relative z-10 ${styles.section} w-[90%] 800px:w-[60%] text-white`}
             style={{ marginTop: "60px", textAlign: "center" }}
           >
-            <h1 className="text-[30px] 800px:text-[55px] font-extrabold leading-tight text-blue-700">
-              Best Collection Of <br /> Medical Equipments
+            <h1 className="text-[30px] 800px:text-[55px] font-extrabold leading-tight text-white">
+              Best Collection Of <br /> Clothing Store
             </h1>
-            <p className="pt-5 text-[16px] 800px:text-[20px] font-bold text-black">
-              Explore medical equipment that meets top safety and reliability standards.
+            <p className="pt-5 text-[16px] 800px:text-[20px] font-bold text-white">
+              Explore Clothings that meets top safety and reliability standards.
             </p>
           </div>
         </div>
 
         {/* Slide 2 */}
         <div
-          className={`relative min-h-[40vh] 800px:min-h-[50vh] w-full bg-cover bg-center bg-no-repeat bg-[url(https://img.freepik.com/premium-photo/high-angle-view-drink-table_1048944-11933435.jpg?size=626&ext=jpg&ga=GA1.1.39547238.1724736152&semt=ais_hybrid)]`}
+          className={`relative min-h-[40vh] 800px:min-h-[50vh] w-full bg-cover bg-center bg-no-repeat bg-[url(https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR69VjSBJSsnXpDE2gn8hbzo7zIPlLSzvv-0FkBiKIuHpfe06ld3q0KBcIoP4LXfsx2Omg&usqp=CAU)]`}
         >
           <div
             className={`relative z-10 ${styles.section} w-[90%] 800px:w-[60%] text-white`}
             style={{ marginTop: "60px", textAlign: "center" }}
           >
-            <h1 className="text-[30px] 800px:text-[55px] font-extrabold leading-tight text-blue-700">
+            <h1 className="text-[30px] 800px:text-[55px] font-extrabold leading-tight text-black">
               Shop Anytime, Anywhere
             </h1>
             <p className="pt-5 text-[16px] 800px:text-[20px] font-bold text-black">
@@ -53,21 +53,7 @@ const Hero = () => {
         </div>
 
         {/* Slide 3 */}
-        <div
-          className={`relative min-h-[40vh] 800px:min-h-[50vh] w-full bg-cover bg-center bg-no-repeat bg-[url(https://img.freepik.com/free-photo/medical-equipments-report-pills-isolated-white-background_23-2147941693.jpg?size=626&ext=jpg)]`}
-        >
-          <div
-            className={`relative z-10 ${styles.section} w-[90%] 800px:w-[60%] text-white`}
-            style={{ marginTop: "60px", textAlign: "center" }}
-          >
-            <h1 className="text-[30px] 800px:text-[55px] font-extrabold leading-tight text-blue-700">
-              Affordable, Quality Products
-            </h1>
-            <p className="pt-5 text-[16px] 800px:text-[20px] font-bold text-black">
-              Affordable and high-quality equipment tailored to your needs.
-            </p>
-          </div>
-        </div>
+       
       </Slider>
     </div>
   );

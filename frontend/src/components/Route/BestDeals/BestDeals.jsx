@@ -35,7 +35,7 @@ const BestDeals = () => {
   return (
     <div className={`${styles.section} bg-white`}>
       <div className={`${styles.heading}`}>
-        <h1 className="text-3xl font-bold text-blue-600 shadow-lg">Best Deals</h1>
+        <h1 className="text-3xl font-bold text-black shadow-lg">Best Deals</h1>
       </div>
       <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mb-12">
         {currentData && currentData.length !== 0 && (

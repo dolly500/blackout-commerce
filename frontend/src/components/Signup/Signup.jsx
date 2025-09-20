@@ -73,13 +73,7 @@ const Signup = () => {
             <FaHome size={24} />
           </button>
         </Link>
-        <Link to="/">
-          <img
-            src={logo}
-            alt=""
-            style={{ height: "60px", width: "190px", display: "flex", margin: "0 auto" }}
-          />
-        </Link>
+        
         <h2 className="mt-6 text-center text-3xl font-extrabold text-gray-900">
           Register as a new user
         </h2>
@@ -185,14 +179,14 @@ const Signup = () => {
             <div>
               <button
                 type="submit"
-                className="group relative w-full h-[40px] flex justify-center py-2 px-4 border border-transparent text-sm font-medium rounded-md text-white bg-blue-600 hover:bg-blue-700"
+                className="group relative w-full h-[40px] flex justify-center py-2 px-4 border border-transparent text-sm font-medium rounded-md text-white bg-black hover:bg-blue-700"
               >
                 Submit
               </button>
             </div>
             <div className={`${styles.noramlFlex} w-full`}>
               <h4>Already have an account?</h4>
-              <Link to="/login" className="text-blue-600 pl-2">
+              <Link to="/login" className="text-black pl-2">
                 Sign In
               </Link>
             </div>

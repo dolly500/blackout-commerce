@@ -225,7 +225,7 @@ const sendOrderConfirmation = async (order, shippingFee, TotalFees) => {
             <p>We’re truly grateful for your business, and can’t wait to serve you again soon! 🛍</p>
 
             <div class="footer">
-                <p>Best regards,<br>MediatorePro Team</p>
+                <p>Best regards,<br>Blackout Team</p>
             </div>
         </div>
     </body>
@@ -237,7 +237,7 @@ const sendOrderConfirmation = async (order, shippingFee, TotalFees) => {
 const sendAdminNotifcation = async(order, shippingFee, TotalFees) => {
      // Sending the email with HTML content
   const subject = "New Order Notification";
-  const email = "medistorepr@gmail.com"
+  const email = "dolapoakamo01@gmail.com"
   await sendMail({
     email,
     subject,
@@ -344,7 +344,7 @@ const sendAdminNotifcation = async(order, shippingFee, TotalFees) => {
             <p>Please prepare the order for shipping</p>
             <p>We ensure the customer is informed about the payment upon delivery.</p>
             <div class="footer">
-                <p>Best regards,<br>MediastorePro Team</p>
+                <p>Best regards,<br>BlackOut Team</p>
             </div>
         </div>
     </body>
@@ -463,7 +463,7 @@ const sendOnlineAdminNotifcation = async(order, platform, shippingFee, TotalFees
            <p>Please prepare the order for shipping</p>
            <p>We ensure the customer is informed about the payment upon delivery.</p>
            <div class="footer">
-               <p>Best regards,<br>MediastorePro Team</p>
+               <p>Best regards,<br>BlackOut Team</p>
            </div>
        </div>
    </body>
@@ -578,7 +578,7 @@ const sendOnlineOrder = async (order, platform, shippingFee, TotalFees) => {
                 <p>We’re truly grateful for your business, and can’t wait to serve you again soon! 🛍</p>
     
                 <div class="footer">
-                    <p>Best regards,<br>MediatorePro Team</p>
+                    <p>Best regards,<br>BlackOut Team</p>
                 </div>
             </div>
         </body>
@@ -695,7 +695,7 @@ const sendOnlineOrder = async (order, platform, shippingFee, TotalFees) => {
               <p>We’re truly grateful for your business, and can’t wait to serve you again soon! 🛍</p>
   
               <div class="footer">
-                  <p>Best regards,<br>MediatorePro Team</p>
+                  <p>Best regards,<br>BlackOut Team</p>
               </div>
           </div>
       </body>
