@@ -14,11 +14,16 @@ const swaggerDocument = require('./swagger-output.json');
 
 
 
-app.use(cors({
-  origin: ['https://blackout-commerce.vercel.app/', 'http://localhost:3000'],
-  credentials: true,
-  domain: 'https://blackout-commerce.vercel.app/'
-}));
+app.use(
+  cors({
+    origin: [
+      "https://blackout-commerce.vercel.app", 
+      "http://localhost:3000"
+    ],
+    credentials: true,
+  })
+);
+
 
 // app.use(express.bodyParser({limit: '50mb'}))
 
