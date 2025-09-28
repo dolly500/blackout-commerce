@@ -10,10 +10,7 @@ const morgan = require("morgan");
 const swaggerUi = require('swagger-ui-express');
 const swaggerDocument = require('./swagger-output.json');
 
-
-
-
-
+// CORS configuration
 app.use(
   cors({
     origin: [
@@ -24,43 +21,36 @@ app.use(
   })
 );
 
-
-// app.use(express.bodyParser({limit: '50mb'}))
-
+// Logging middleware
 app.use(morgan("dev"));
+
+// Body parser middleware with increased limits
 app.use(express.json({ limit: '100mb' }));
 app.use(bodyParser.json({ limit: '100mb' }));
 app.use(bodyParser.urlencoded({ extended: true, limit: "100mb" }));
 app.use(express.urlencoded({ extended: true, limit: "100mb" }));
 app.use(cookieParser());
+
+// Static files
 app.use("/", express.static(path.join(__dirname, "./uploads")));
 
-
+// Health check route
 app.get("/", async (req, res, next) => {
   res.send({ message: "Welcome🚀" });
 });
 
-// app.use(fileUpload({
-//   limits: { fileSize: 100 * 1024 * 1024 },  // Set limit to 100MB
-// }));
+// Swagger documentation
+app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerDocument));
 
-
-
-
-
-app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerDocument))
-
-app.use(bodyParser.urlencoded({ extended: true, limit: "52428800" }));
-
-// config
+// Load environment variables
 if (process.env.NODE_ENV !== "PRODUCTION") {
   require("dotenv").config({
     path: ".env",
   });
 }
 
-// import routes
-const paypal = require("./controller/paypal")
+// Import routes
+const paypal = require("./controller/paypal");
 const user = require("./controller/user");
 const shop = require("./controller/shop");
 const product = require("./controller/product");
@@ -75,9 +65,9 @@ const message = require("./controller/message");
 const withdraw = require("./controller/withdraw");
 const questionaire = require("./controller/questionaire");
 const coinpayment = require("./controller/coinpayments");
-const banktransfer = require("./controller/banktransfer")
+const banktransfer = require("./controller/banktransfer");
 
-
+// Route middlewares
 app.use("/api/v2/user", user);
 app.use("/api/v2/conversation", conversation);
 app.use("/api/v2/message", message);
@@ -91,13 +81,30 @@ app.use("/api/v2/coupon", coupon);
 app.use("/api/v2/payment", payment);
 app.use("/api/v2/withdraw", withdraw);
 app.use("/api/v2/questionaire", questionaire);
-app.use("/api/v2/banktransfer", banktransfer)
+app.use("/api/v2/banktransfer", banktransfer);
 app.use("/api/v2/paypal", paypal);
 app.use("/api/v2/payment/coinpayment", coinpayment);
 
-// app.use("/api/v2/", require("../backend/routes/admin.route"));
+// 404 handler - must come after all routes
+app.use('*', (req, res, next) => {
+  const err = new Error(`Route ${req.originalUrl} not found`);
+  err.statusCode = 404;
+  next(err);
+});
 
-// it's for ErrorHandling
-// app.use(ErrorHandler);
+// Global error handling middleware - MUST be last
+app.use((err, req, res, next) => {
+  console.error('Error occurred:', err);
+  
+  const statusCode = err.statusCode || err.status || 500;
+  const message = err.message || 'Internal Server Error';
+  
+  // Send JSON error response instead of HTML
+  res.status(statusCode).json({
+    success: false,
+    error: message,
+    ...(process.env.NODE_ENV === 'development' && { stack: err.stack })
+  });
+});
 
 module.exports = app;
