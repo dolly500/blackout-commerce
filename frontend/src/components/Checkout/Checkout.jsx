@@ -221,7 +221,7 @@ const Checkout = () => {
   });
 
   // Paystack configuration
-  const paystackPublicKey = process.env.REACT_APP_PAYSTACK_PUBLIC_KEY || "pk_test_your_public_key_here";
+  const paystackPublicKey = "pk_test_d556bd38532ad45ef5cb38cf11d6d6c2edb194e5";
 
   // Calculate total price
   const totalPrice = cart.reduce((acc, item) => acc + item.qty * item.discountPrice, 0);
