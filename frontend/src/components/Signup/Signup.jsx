@@ -15,17 +15,21 @@ const Signup = () => {
   const [password, setPassword] = useState("");
   const [visible, setVisible] = useState(false);
   const [avatar, setAvatar] = useState(null);
+  const [isLoading, setIsLoading] = useState(false);
 
   const handleFileInputChange = (e) => {
-    const reader = new FileReader();
+    const file = e.target.files[0];
+    if (file) {
+      const reader = new FileReader();
 
-    reader.onload = () => {
-      if (reader.readyState === 2) {
-        setAvatar(reader.result); // Set the avatar to the Base64 string
-      }
-    };
+      reader.onload = () => {
+        if (reader.readyState === 2) {
+          setAvatar(reader.result); // Set the avatar to the Base64 string
+        }
+      };
 
-    reader.readAsDataURL(e.target.files[0]); // Read the image as a Base64 string
+      reader.readAsDataURL(file); // Read the image as a Base64 string
+    }
   };
 
   const checkEmailExists = async (email) => {
@@ -33,6 +37,7 @@ const Signup = () => {
       const res = await axios.post(`${server}/user/check-email`, { email });
       return res.data.exists; // Backend should return a boolean 'exists' to indicate if the email is registered
     } catch (error) {
+      console.error("Error checking email:", error);
       toast.error("Error checking email");
       return false;
     }
@@ -40,36 +45,58 @@ const Signup = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    setIsLoading(true);
 
-    const emailExists = await checkEmailExists(email);
+    try {
+      const emailExists = await checkEmailExists(email);
 
-    if (emailExists) {
-      toast.error("Email has already been registered");
-      return;
-    }
+      if (emailExists) {
+        toast.error("Email has already been registered");
+        setIsLoading(false);
+        return;
+      }
 
-    const defaultAvatarUrl = "https://gravatar.com/avatar/95ff202ce9742c49d7ebbaaef6515af8?s=400&d=robohash&r=x";
-    const avatarToUpload = avatar || defaultAvatarUrl;
+      const defaultAvatarUrl = "https://gravatar.com/avatar/95ff202ce9742c49d7ebbaaef6515af8?s=400&d=robohash&r=x";
+      const avatarToUpload = avatar || defaultAvatarUrl;
 
-    axios
-      .post(`${server}/user/create-user`, { name, email, password, avatar: avatarToUpload })
-      .then((res) => {
-        toast.success(res.data.message);
+      const response = await axios.post(`${server}/user/create-user`, { 
+        name, 
+        email, 
+        password, 
+        avatar: avatarToUpload 
+      });
+
+      console.log("Success response:", response.data);
+      
+      if (response.data.success) {
+        toast.success(response.data.message);
+        // Reset form
         setName("");
         setEmail("");
         setPassword("");
-        setAvatar(null); // Reset the avatar after submission
-      })
-      .catch((error) => {
-        toast.error(error.response.data.message);
-      });
+        setAvatar(null);
+        // Reset file input
+        const fileInput = document.getElementById('file-input');
+        if (fileInput) {
+          fileInput.value = '';
+        }
+      } else {
+        toast.error(response.data.message || "Registration failed");
+      }
+    } catch (error) {
+      console.error("Registration error:", error);
+      const errorMessage = error.response?.data?.message || "Registration failed. Please try again.";
+      toast.error(errorMessage);
+    } finally {
+      setIsLoading(false);
+    }
   };
 
   return (
     <div className="min-h-screen bg-gray-50 flex flex-col justify-center py-12 sm:px-6 lg:px-8">
       <div className="sm:mx-auto sm:w-full sm:max-w-md">
         <Link to="/">
-          <button className="absolute top-4 right-4 text-blue-600">
+          <button className="absolute top-4 right-4 text-blue-600 hover:text-blue-800">
             <FaHome size={24} />
           </button>
         </Link>
@@ -93,7 +120,8 @@ const Signup = () => {
                   required
                   value={name}
                   onChange={(e) => setName(e.target.value)}
-                  className="appearance-none block w-full px-3 py-2 border border-black-300 rounded-md shadow-sm placeholder-gray-400 focus:outline-none focus:ring-blue-500 focus:border-blue-500 sm:text-sm"
+                  className="appearance-none block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm placeholder-gray-400 focus:outline-none focus:ring-blue-500 focus:border-blue-500 sm:text-sm"
+                  disabled={isLoading}
                 />
               </div>
             </div>
@@ -110,7 +138,8 @@ const Signup = () => {
                   required
                   value={email}
                   onChange={(e) => setEmail(e.target.value)}
-                  className="appearance-none block w-full px-3 py-2 border border-black-300 rounded-md shadow-sm placeholder-gray-400 focus:outline-none focus:ring-blue-500 focus:border-blue-500 sm:text-sm"
+                  className="appearance-none block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm placeholder-gray-400 focus:outline-none focus:ring-blue-500 focus:border-blue-500 sm:text-sm"
+                  disabled={isLoading}
                 />
               </div>
             </div>
@@ -123,11 +152,12 @@ const Signup = () => {
                 <input
                   type={visible ? "text" : "password"}
                   name="password"
-                  autoComplete="current-password"
+                  autoComplete="new-password"
                   required
                   value={password}
                   onChange={(e) => setPassword(e.target.value)}
-                  className="appearance-none block w-full px-3 py-2 border border-black-300 rounded-md shadow-sm placeholder-gray-400 focus:outline-none focus:ring-blue-500 focus:border-blue-500 sm:text-sm"
+                  className="appearance-none block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm placeholder-gray-400 focus:outline-none focus:ring-blue-500 focus:border-blue-500 sm:text-sm"
+                  disabled={isLoading}
                 />
                 {visible ? (
                   <AiOutlineEye
@@ -146,7 +176,9 @@ const Signup = () => {
             </div>
 
             <div>
-              <label htmlFor="avatar" className="block text-sm font-medium text-pink-700"></label>
+              <label htmlFor="avatar" className="block text-sm font-medium text-gray-700">
+                Profile Picture
+              </label>
               <div className="mt-2 flex items-center">
                 <span className="inline-block h-8 w-8 rounded-full overflow-hidden">
                   {avatar ? (
@@ -161,7 +193,7 @@ const Signup = () => {
                 </span>
                 <label
                   htmlFor="file-input"
-                  className="ml-5 flex items-center justify-center px-4 py-2 border border-gray-300 rounded-md shadow-sm text-sm font-medium text-gray-700 bg-white hover:bg-gray-50"
+                  className="ml-5 flex items-center justify-center px-4 py-2 border border-gray-300 rounded-md shadow-sm text-sm font-medium text-gray-700 bg-white hover:bg-gray-50 cursor-pointer"
                 >
                   <span>Upload a file</span>
                   <input
@@ -171,6 +203,7 @@ const Signup = () => {
                     accept=".jpg,.jpeg,.png"
                     onChange={handleFileInputChange}
                     className="sr-only"
+                    disabled={isLoading}
                   />
                 </label>
               </div>
@@ -179,14 +212,19 @@ const Signup = () => {
             <div>
               <button
                 type="submit"
-                className="group relative w-full h-[40px] flex justify-center py-2 px-4 border border-transparent text-sm font-medium rounded-md text-white bg-black hover:bg-blue-700"
+                disabled={isLoading}
+                className={`group relative w-full h-[40px] flex justify-center py-2 px-4 border border-transparent text-sm font-medium rounded-md text-white ${
+                  isLoading 
+                    ? 'bg-gray-400 cursor-not-allowed' 
+                    : 'bg-black hover:bg-blue-700'
+                }`}
               >
-                Submit
+                {isLoading ? 'Creating Account...' : 'Submit'}
               </button>
             </div>
             <div className={`${styles.noramlFlex} w-full`}>
               <h4>Already have an account?</h4>
-              <Link to="/login" className="text-black pl-2">
+              <Link to="/login" className="text-black pl-2 hover:text-blue-600">
                 Sign In
               </Link>
             </div>
