@@ -78,7 +78,7 @@ const ProductCard = ({ data,isEvent }) => {
     <div className="py-2 flex items-center justify-between">
       <div className="flex">
         <h4 className={`${styles.price} text-[10px] ml-2`}>
-          {data?.originalPrice ? `${data?.originalPrice} $` : null}
+          {data?.originalPrice ? `₦ ${data?.originalPrice}` : null}
         </h4>
       </div>
       {/* <span className="font-[400] text-[10px] text-[#0000FF]">
@@ -101,7 +101,7 @@ const ProductCard = ({ data,isEvent }) => {
         size={22}
         className="cursor-pointer absolute right-2 top-48 mt-6"
         onClick={() => addToWishlistHandler(data)}
-        color="#0000FF"
+        color="#020202ff"
         title="Add to wishlist"
       />
     )}
@@ -110,7 +110,7 @@ const ProductCard = ({ data,isEvent }) => {
   
   <div className="absolute bottom-3 w-full flex justify-center">
     <button
-      className="bg-blue-700 text-white px-2 py-2 rounded text-[12px]"
+      className="bg-black text-white px-2 py-2 rounded text-[12px]"
       onClick={() => addToCartHandler(data?._id)}
     >
       Add to Cart

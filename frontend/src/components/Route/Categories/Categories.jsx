@@ -65,14 +65,14 @@ const Categories = () => {
                 onClick={() => handleSubmit(i)}
               >
                 {/* Uncomment if image is available */}
-                {/* <img
+                <img
                   src={i?.images?.[0]?.url}
                   className="w-full h-28 object-cover rounded-t-lg mb-2"
                   alt={i.name}
-                /> */}
+                />
                 <h5 className="mb-1 text-lg font-semibold text-gray-800">{i.name}</h5>
                 <Link to={`/products?category=${i.name}`} className="inline-block">
-                  <div className="mt-2 bg-blue-600 hover:bg-blue-500 transition rounded text-center py-1 px-3">
+                  <div className="mt-2 bg-black hover:bg-blue-500 transition rounded text-center py-1 px-3">
                     <span className="text-white text-sm font-semibold">Shop Now</span>
                   </div>
                 </Link>
@@ -89,7 +89,7 @@ const Categories = () => {
               onClick={() => paginate(index + 1)}
               className={`w-8 h-8 flex items-center justify-center text-sm font-medium rounded-full ${
                 currentPage === index + 1
-                  ? "bg-blue-600 text-white border-blue-600"
+                  ? "bg-black text-white border-blue-600"
                   : "bg-gray-300 text-gray-800 hover:bg-gray-400"
               }`}
             >

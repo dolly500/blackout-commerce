@@ -114,11 +114,12 @@ router.post('/check-email', async (req, res) => {
 // create activation token
 const createActivationToken = (user) => {
   return jwt.sign(
-    { email: user.email }, 
+    { name: user.name, email: user.email, password: user.password, avatar: user.avatar },
     process.env.ACTIVATION_SECRET,
     { expiresIn: "30m" }
   );
 };
+
 
 
 // activate user
@@ -127,30 +128,37 @@ router.post("/activation", catchAsyncErrors(async (req, res, next) => {
     const { activation_token } = req.body;
 
     const decoded = jwt.verify(activation_token, process.env.ACTIVATION_SECRET);
-    if (!decoded) {
-      return next(new ErrorHandler("Invalid or expired token", 400));
-    }
 
-    // Now you can safely re-fetch user data that was stored temporarily
-    const { name, email, password, avatar } = req.body.userData; 
-    // Or store user info in a temporary DB/cache before sending mail
-
-    let user = await User.findOne({ email });
-    if (user) {
+    let existingUser = await User.findOne({ email: decoded.email });
+    if (existingUser) {
       return next(new ErrorHandler("User already exists", 400));
     }
 
-    user = await User.create({ name, email, avatar, password });
+    // hash password before saving
+    const hashedPassword = await bcrypt.hash(decoded.password, 10);
+
+    const newUser = await User.create({
+      name: decoded.name,
+      email: decoded.email,
+      password: hashedPassword,
+      avatar: decoded.avatar
+    });
 
     res.status(201).json({
       success: true,
       message: "User activated successfully",
-      user,
+      user: newUser,
     });
   } catch (error) {
+    if (error.name === "TokenExpiredError") {
+      return next(new ErrorHandler("Activation token expired", 400));
+    } else if (error.name === "JsonWebTokenError") {
+      return next(new ErrorHandler("Invalid activation token", 400));
+    }
     return next(new ErrorHandler(error.message, 500));
   }
 }));
+
 
 
 

@@ -53,7 +53,7 @@ const BestDeals = () => {
             key={index}
             onClick={() => handlePageChange(index + 1)}
             className={`px-3 py-1 text-sm sm:text-base rounded-full transition-all ${
-              currentPage === index + 1 ? "bg-blue-600 text-white" : "bg-gray-200 hover:bg-blue-500 hover:text-white"
+              currentPage === index + 1 ? "bg-black text-white" : "bg-gray-200 hover:bg-blue-500 hover:text-white"
             }`}
           >
             {index + 1}

@@ -153,14 +153,14 @@ const ProductDetails = ({ data }) => {
                   ${data.discountPrice}
                   </h4> */}
                   <h2 className={`${styles.price}`}>
-                    {data.originalPrice ? "$" + data.originalPrice : null}
+                    {data.originalPrice ? "₦" + data.originalPrice : null}
                   </h2>
                 </div>
 
                 <div className="flex items-center mt-12 justify-between pr-3">
                   <div>
                     <button
-                      className="bg-blue-700 text-white font-bold rounded-l px-4 py-2 shadow-lg hover:opacity-75 transition duration-300 ease-in-out"
+                      className="bg-black text-white font-bold rounded-l px-4 py-2 shadow-lg hover:opacity-75 transition duration-300 ease-in-out"
                       onClick={decrementCount}
                     >
                       -
@@ -169,7 +169,7 @@ const ProductDetails = ({ data }) => {
                       {count}
                     </span>
                     <button
-                      className="bg-blue-700 text-white font-bold rounded-l px-4 py-2 shadow-lg hover:opacity-75 transition duration-300 ease-in-out"
+                      className="bg-black text-white font-bold rounded-l px-4 py-2 shadow-lg hover:opacity-75 transition duration-300 ease-in-out"
                       onClick={incrementCount}
                     >
                       +

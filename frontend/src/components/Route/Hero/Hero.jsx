@@ -27,7 +27,7 @@ const Hero = () => {
             style={{ marginTop: "60px", textAlign: "center" }}
           >
             <h1 className="text-[30px] 800px:text-[55px] font-extrabold leading-tight" style={{color: 'black'}}>
-              Best Collection Of <br /> Clothing Store
+              <span style={{color: 'white'}}>Best Collection</span> Of <br /> Clothing Store
             </h1>
             <p className="pt-5 text-[16px] 800px:text-[20px] font-bold text-black" style={{color: 'black'}}>
               Explore Clothings that meets top safety and reliability standards.
@@ -44,7 +44,7 @@ const Hero = () => {
             style={{ marginTop: "60px", textAlign: "center" }}
           >
             <h1 className="text-[30px] 800px:text-[55px] font-extrabold leading-tight text-black">
-              Shop Anytime, Anywhere
+              <span style={{color: 'white'}}>Shop</span> Anytime, Anywhere
             </h1>
             <p className="pt-5 text-[16px] 800px:text-[20px] font-bold text-black">
               Get high-quality medical equipment designed for durability and precision.

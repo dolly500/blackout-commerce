@@ -108,7 +108,7 @@ const sendOrderConfirmation = async (order, shippingFee, TotalFees) => {
               <p>We’re truly grateful for your business, and can’t wait to serve you again soon! 🛍</p>
   
               <div class="footer">
-                  <p>Best regards,<br>MediatorePro Team</p>
+                  <p>Best regards,<br>Blackout Team</p>
               </div>
           </div>
       </body>
